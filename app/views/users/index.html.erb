@@ -1,0 +1,32 @@
+<div >
+	<table class="table table-striped" >
+		<tr>
+			<th >First Name</th>
+			<th >Last Name</th>
+		
+			<th>Action</th>
+
+		</tr>
+
+		<%@users.each do |user|%>
+		<div>
+			<tr>
+				<td><%= user.first_name %></td>
+				<td><%= user.last_name %></td>
+				<td>
+					<%= link_to 'Show', user_path(user)%>
+	
+					</td>
+
+				</tr>
+			</div>
+
+			<% end %>
+		</table>
+	</div>
+
+	<div>
+		<%=link_to 'Exit',destroy_user_session_path,method: :delete, class:"btn btn-primary"%>
+		<%=link_to 'User',new_user_path, class:"btn btn-primary"%>
+
+	</div>

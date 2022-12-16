@@ -1,0 +1,18 @@
+<div class="form-outline position-absolute top-50 start-50 translate-middle my-4 p-5 rounded border border-success bg-white col-6">
+	<%= form_with model: @user, local: true do |form| %>
+
+<h2>Upload The Files</h2>
+		<div>
+  			<%= form.file_field :image%>
+  		</div>
+  		<div>
+   			<%= form.file_field :pdffile%>
+  		</div>
+  		<div>
+   			<%= form.file_field :pdffile2%>
+  		</div>
+  		<div>
+   			<%= form.file_field :docFile%>
+  		</div>
+  		<% end %>
+</div>
