@@ -1,63 +1,52 @@
-<div class="form-outline my-4 p-5 rounded border border-success col-6">
-	<%= form_with model: @user, local: true do |form| %>
+<div class="testbox">
+      
+      	 <%= form_with model: user, local: true do |form| %>
+        <div class="banner">
+          <h1>New Member Registration</h1>
+        </div>
+        <div class="colums">
+          <div class="item">
+            <label for="fname"> First Name<span>*</span></label>
+            <%= form.text_field :first_name%>
+          </div>
+          <div class="item">
+            <label for="lname"> Last Name<span>*</span></label>
+           <%= form.text_field :last_name%>
+          </div>
+           <div class="item">
+            <label for="dob">Date of Birth<span>*</span></label>
+            <%= form.date_field :dob%>
 
-	<div >
-	<label><%= form.label :Name%></label><br>
-	<div class="row">
-		<div class="col-6 mr-3 ">
-			<%=form.text_field :first_name %>
-		</div>
-		<div class="col-6 ">
-			<%=form.text_field :last_name%>
-		</div>
-	</div>
-	</div>
-	<div>
-		<label><%=form.label :PhoneNumber%></label><br>
-
-		<div>
-			<%=form.text_field :phone_number%>
-		</div>
-	</div>
-	<div>
-		<label><%=form.label :CNIC%></label><br>
-
-		<div>
-			<%=form.text_field :cnic%>
-		</div>
-	</div>
-	<div>
-		<label><%=form.label :DOB%></label><br>
-
-		<div>
-			<%=form.date_field :dob%>
-		</div>
-	</div>
-	<div>
-		<label><%=form.label :Address%></label><br>
-		<div>
-			<%=form.text_field :address%>
-		</div>
-	</div>
-	<!-- <div>
-		<label>Select One</label>
-		<div>
-			<%= form.radio_button :male, "Male" %>
-			<%= form.label :Male, "Male" %>
-		</div>
-		<div>
-			<%= form.radio_button :female, "Male" %>
-			<%= form.label :Female, "Female" %>
-		</div>
-	</div> -->
-	<div>
-		<div class="my-2">
-
-
-			<%= form.submit %>
-			</div>
-
-
-	</div>
-	<% end %>
-</div>
+          </div>
+          <div class="item">
+            <label for="address1">Address<span>*</span></label>
+            <%= form.text_field :address%>
+          </div>
+          <div class="item">
+            <label for="state">State<span>*</span></label>
+             <%= form.text_field :state%>
+          </div>
+          <div class="item">
+            <label for="zip">Cnic<span>*</span></label>
+            <%= form.text_field :cnic%>
+          </div>
+          <div class="item">
+            <label for="zip">Zip/Postal Code<span>*</span></label>
+             <%= form.text_field :zipcode%>
+          </div>
+          <div class="item">
+            <label for="city">City<span>*</span></label>
+            <%= form.text_field :city%>
+          </div>
+          <div class="item">
+            <label for="phone">Phone<span>*</span></label>
+            <%= form.text_field :phone_number%>
+          </div>
+        </div>
+        <div class="btn-block">
+          <%= form.submit "Submit",:class=> "btn btn-primary m-1" %>
+          <% end %>
+        </div>
+      
+      
+    </div>
