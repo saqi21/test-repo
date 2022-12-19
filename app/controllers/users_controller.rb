@@ -16,11 +16,14 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
-
+  def verificationModuel 
+    @user=User.find(current_user.id)
+  end
   def file_upload
     @user=User.find(current_user.id)
     if @user.update(file_params)
-      render "show"
+    VerificationEmailMailer.verify_email(@user).deliver_now
+    render "verificationModuel"
     else
       render 'edit'
     end

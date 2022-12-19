@@ -13,10 +13,21 @@
             <label for="lname"> Last Name<span>*</span></label>
            <%= form.text_field :last_name%>
           </div>
+          <div class="item">
+            <label for="eamil">Emial<span>*</span></label>
+            <%= form.email_field :email%>
+          </div>
+           <div class="item">
+            <label for="phone">Phone<span>*</span></label>
+            <%= form.text_field :phone_number%>
+          </div>
+          <div class="item">
+            <label for="zip">Cnic<span>*</span></label>
+            <%= form.text_field :cnic%>
+          </div>
            <div class="item">
             <label for="dob">Date of Birth<span>*</span></label>
             <%= form.date_field :dob%>
-
           </div>
           <div class="item">
             <label for="address1">Address<span>*</span></label>
@@ -26,10 +37,7 @@
             <label for="state">State<span>*</span></label>
              <%= form.text_field :state%>
           </div>
-          <div class="item">
-            <label for="zip">Cnic<span>*</span></label>
-            <%= form.text_field :cnic%>
-          </div>
+          
           <div class="item">
             <label for="zip">Zip/Postal Code<span>*</span></label>
              <%= form.text_field :zipcode%>
@@ -38,13 +46,12 @@
             <label for="city">City<span>*</span></label>
             <%= form.text_field :city%>
           </div>
-          <div class="item">
-            <label for="phone">Phone<span>*</span></label>
-            <%= form.text_field :phone_number%>
-          </div>
         </div>
-        <div class="btn-block">
+        </div>
+
+        <div class="btn btn-sm  float-left">
           <%= form.submit "Submit",:class=> "btn btn-primary m-1" %>
+          <%= link_to 'Exit',destroy_user_session_path,method: :delete,class:'btn btn-primary'%>
           <% end %>
         </div>
       
