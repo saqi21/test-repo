@@ -1,5 +1,12 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  def index
+      if current_user.admin?
+        @users=User.all
+      else
+        @users=User.where(id:current_user.id)
+      end
+  end
   def edit
     @user=User.find(current_user.id)
   end
