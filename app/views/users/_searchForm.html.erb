@@ -1,0 +1,11 @@
+<div class="">
+  <%=search_form_for @q,url: :root do |form|%>
+    <div class="input-group">
+      <div class="form-outline">
+        <label for="search"> Search</label>
+        <%=form.search_field :first_name_or_last_name_or_email_cont%>
+      </div> 
+        <i class=""><%=form.submit "Search", class:"btn btn-primary my-4"%></i>
+    </div>
+      <%end%> 
+</div>

@@ -1,5 +1,10 @@
- <div class="container m-5">
+<%=render 'header'%>
+ <%if current_user.admin?%>
+      <%= render 'searchForm'%>
+   <%end%>
+ <div class="my-4">
  <div class=" table-responsive bg-white rounded border border-success p-2">
+
    <table class="table table-striped" >
 		<tr>
 			<th >First Name</th>
@@ -15,12 +20,16 @@
 				<td><%= user.first_name %></td>
 				<td><%= user.last_name %></td>
 				<td><%= user.email %></td>
+				
 				<td>
 					<%if current_user.admin?%>
-					<%= link_to 'Show', user_path(user)%>
+					<%= link_to 'Show', user_path(user),class:"btn btn-success btn-sm w-25"%>
+					<button class="btn btn-danger btn-sm w-25">Reject</button>
+					<button class="btn btn-success btn-sm w-25">Approve</button>
 					<%else%>
-					<%= link_to 'Show', user_path(user)%>
-					<%= link_to 'Edit', edit_user_path(user),class:"btn btn-success" %>
+					<%= link_to 'Show', user_path(user),class:"btn btn-success"%>
+					<%= link_to 'Continue Application', edit_user_path(user),class:"btn btn-success" %>
+
 					<%end%>	
 					</td>
 				</tr>
@@ -28,12 +37,7 @@
 
 			<% end %>
 		</table>
-	</div>
-	<%= link_to 'Exit',destroy_user_session_path,method: :delete,class:"btn btn-success my-2" %>
-	<div>
+		<%= paginate @users %>
 	</div>
 	</div>
-
-
-
 
