@@ -12,8 +12,7 @@ class User < ApplicationRecord
         validates :first_name,:last_name,presence: true,length: { minimum: 3 },:on =>:update
         validates :address,presence: true,:on =>:update
         validates :zipcode, presence:true, length:{is: 5},:on =>:update
-        validates :phone_number, presence: true,format: { with: /\(?[\d]{4}\)?[\s|-]?[\d]{7}/,
-        message: "only allows letters" },:on =>:update
+        validates :phone_number, presence: true,:on =>:update
         validates :cnic,presence: true,uniqueness: true,format: { with: /\(?[\d]{5}\)?[\s|-]?[\d]{7}-?[\d]{1}/,
         message: "only allows letters" },:on =>:update
         validates :email,presence: true,:on =>:update
