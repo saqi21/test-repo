@@ -8,10 +8,10 @@
 		</div>		
 </div>
 <div class="colums">
-	<%= form_with model:current_user, url:users_email_verified_path, method: :get, local: true do |form| %>
+	<%= form_with model:current_user, url:verified_email_path, method: :get, local: true do |form| %>
 		<div class="item">
 			<label for="eamil">Enter Code</label>
-      		<%=link_to 'Send Code',users_sent_email_OTP_Code_path%>
+      		<%=link_to 'Send Code', sent_otp_on_email_path%>
       		<%=form.text_field :verifyCode%>
       		<%= form.submit "Submit",:class=> "btn btn-primary btn-sm m-1" %>
       		
@@ -32,10 +32,10 @@
 		</div>		
 </div>
 <div class="colums">
-	<%= form_with model:current_user, url:users_phone_verified_path, method: :get, local: true do |form| %>
+	<%= form_with model:current_user, url:verified_phone_path, method: :get, local: true do |form| %>
 		<div class="item">
 			<label for="eamil">Enter Code</label>
-      		<%=link_to 'Send Code', users_sent_Phone_OTP_Code_path %>
+      		<%=link_to 'Send Code', sent_otp_on_phone_path %>
       		<%=form.text_field :verifyPhoneCode%>
       		<%= form.submit "Submit",:class=> "btn btn-primary btn-sm m-1" %>
       		

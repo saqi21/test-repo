@@ -5,17 +5,18 @@ class UsersController < ApplicationController
   def index
       if current_user.admin?
           @q=User.ransack(params[:q])
-          @users=@q.result(distinct: true).page(params[:page])
+          @users=@q.result(distinct: true).where(email_verify:true,phone_verify:true).page(params[:page])
       else
         @users=User.where(id:current_user.id)
       end
   end
+
   def edit
     @user=User.find(current_user.id)
   end
 
   def show
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
   end
 
   def update
@@ -26,6 +27,27 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+  def status_approved
+    @user = User.find(params[:id])
+  if @user.update(status: 1)
+    flash[:alert]="Application Approved"
+    redirect_to root_path
+  else
+    redirect_to root_path
+    flash[:alert]="No action perform"
+  end
+  end
+
+  def userReject
+    @user = User.find(params[:id])
+    if @user.update(status: 2)
+      flash[:alert]="Application Rejected"
+      redirect_to root_path
+    else
+      flash[:alert]="No action perform"
+    end
+  end
+
   # def file_upload
   #   @user=User.find(current_user.id)
   #   if @user.update(file_params)
@@ -42,39 +64,42 @@ class UsersController < ApplicationController
     VerificationEmailMailer.verify_email(@user,$email_code).deliver_now
     render 'verificationModuel'
   end
-   def verify_email_code
+  def verify_email_code
     if $email_code==params[:user][:verifyCode]
         current_user.update(email_verify: true)
-        flash[:alert]="Verified Successfully"
+        flash[:alert]="Email verified successfully"
     else
-        flash[:alert]="Verified UnSuccessfully"
+        flash[:alert]="Email verificatoin unsuccessfully"
     end
     render 'verificationModuel'
   end
-
+  def verificationModuel
+  end
 
   def send_phoneCode
       @user=User.find(current_user.id)
       $phone_code=rand.to_s[2..7]
       @message="Hello "+current_user.first_name+" Here is Your Phone Verifcation OTP Code "+$phone_code.to_s
-      if TwilioClient.new.send_text(@user,@message)
-        flash[:alert]="SMS sent Successfully"
-      else
-        flash[:alert]="SMS sent Unsuccessfully"
-      end
+      # if TwilioClient.new.send_text(@user,@message)
+      #   flash[:alert]="SMS sent Successfully"
+      # else
+      #   flash[:alert]="SMS sent Unsuccessfully"
+      # end
+      VerificationEmailMailer.verify_email(@user,$phone_code).deliver_now
       render 'verificationModuel'
   end
   def verify_phoneCode
     if $phone_code==params[:user][:verifyPhoneCode]
       current_user.update(phone_verify: true)
-      flash[:alert]="Verified Successfully"
+      flash[:alert]="Phone number verified Successfully"
+      redirect_to root_path
+      flash[:alert]="ThankYou Your Appllciation Completed Successfully"
     else
-      flash[:alert]="Verified UnSuccessfully"
+      flash[:alert]="Phone number verificaion Unsuccessfully"
+      return
     end
-    render 'thankyou'
-  end
 
-def thankyou; end
+  end
   private
   def user_params
     params.require(:user).permit(:first_name,:last_name,:email,

@@ -53,12 +53,18 @@
 				
 				<td>
 					<%if current_user.admin?%>
-					<%= link_to 'Show', user_path(user),class:"btn btn-success btn-sm w-25"%>
-					<button class="btn btn-danger btn-sm w-25">Reject</button>
-					<button class="btn btn-success btn-sm w-25">Approve</button>	
+						<%= link_to 'Show', user_path(user.id),class:"btn btn-success btn-sm w-25"%>
+						<%if user.status ==1%>
+							<button class="btn btn-sm w-25 btn-success">Approved</button>
+						<%elsif user.status==2%>
+							<button class="btn btn-sm w-25 btn-danger">Rejected</button>
+						<%else%>
+							<%=link_to 'Approve',accept_application_path(user), class:"btn btn-success btn-sm w-25"%>
+							<%=link_to 'Reject',reject_application_path(user) , class:"btn btn-danger btn-sm w-25"%>
+						<%end%>
 					<%else%>
-					<%= link_to 'Show', user_path(user),class:"btn btn-success btn-sm w-25"%>
-					<%= link_to 'Application', edit_user_path(user),class:"btn btn-success btn-sm w-25" %>
+						<%= link_to 'Show', user_path(user),class:"btn btn-success btn-sm w-25"%>
+						<%= link_to 'Application', edit_user_path(user),class:"btn btn-success btn-sm w-25" %>
 
 					<%end%>	
 					</td>
