@@ -37,6 +37,7 @@
  <div class=" table-responsive bg-white rounded border border-success p-2">
    <table class="table table-striped" >
 		<tr>
+			<th> ID#</th>
 			<th >First Name</th>
 			<th >Last Name</th>
 			<th >Email</th>
@@ -47,6 +48,7 @@
 		<%@users.each do |user|%>
 		<div>
 			<tr>
+				<td><%= user.id %></td>
 				<td><%= user.first_name %></td>
 				<td><%= user.last_name %></td>
 				<td><%= user.email %></td>
@@ -88,7 +90,12 @@
 
 
 
-
+<!-- <div class="container m-5">
+	<%= form_with url:root_path,method: :post do |form|%>
+	<%=form.file_field :file, accept:".csv"%>
+	<%=form.submit "import",class:"btn btn-sm btn-success"%>
+<% end %>
+</div> -->
 
 
 

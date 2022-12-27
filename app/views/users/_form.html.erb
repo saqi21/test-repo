@@ -48,6 +48,13 @@
             <%= form.text_field :city , class:"inputField"%>
           </div>
           <div class="item">
+            <label for="files">Gender<span>*</span></label><br>
+              <%= form.radio_button :gender, "Male" ,class:"m-1" %>
+              <label>Male</label>
+              <%= form.radio_button :gender, "Female", class:"m-1"%>
+              <label>Female</label>
+          </div>
+          <div class="item">
             <label for="files">Upload Files<span>*</span></label>
               <%= form.file_field :files_Upload , class:"inputField"%>
           </div>

@@ -100,11 +100,12 @@ class UsersController < ApplicationController
     end
 
   end
+
   private
   def user_params
     params.require(:user).permit(:first_name,:last_name,:email,
                                  :phone_number,:dob,:cnic,:address,
-                                 :state,:zipcode,:city,:files_Upload)
+                                 :state,:zipcode,:city,:gender,:files_Upload)
   end
   # def file_params
   #   params.require(:user).permit(:pdffile,:pdffile2,:image,:docFile)

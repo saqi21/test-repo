@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'users#index'
+  namespace :api do
+    namespace :v1 do
+      resources :file_upload, only: [:create]
+  end
+end
   resources :users, only: [:edit,:update,:show]
   # put "users/file_upload", to: "users#file_upload"
   #get 'users/:id/verify_user', to: 'users#verificationModuel'
@@ -11,4 +16,5 @@ Rails.application.routes.draw do
   get 'users/:id/status_accepted' ,to: 'users#status_approved'     ,as: "accept_application"
   get 'users/:id/status_rejected' ,to: 'users#userReject'          ,as: "reject_application"
   #get 'users/:id/thankyou_page'   ,to: 'users#thankyou_page'       ,as:"thankyou_page"
+  #post 'users/:id/file_imported' ,to:"users#import"
 end

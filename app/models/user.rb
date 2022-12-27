@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-         paginates_per 10
+         paginates_per 5
         attribute :user
         has_many_attached :files_Upload
 
