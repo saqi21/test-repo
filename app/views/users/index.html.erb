@@ -42,7 +42,6 @@
 			<th >Last Name</th>
 			<th >Email</th>
 			<th>Action</th>
-
 		</tr>
 
 		<%@users.each do |user|%>
@@ -72,7 +71,6 @@
 					</td>
 				</tr>
 			</div>
-
 			<% end %>
 		</table>
 		<%if current_user.admin?%>
@@ -80,34 +78,3 @@
 		<%end%>	
 	</div>
 	</div>
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="container m-5">
-	<%= form_with url:root_path,method: :post do |form|%>
-	<%=form.file_field :file, accept:".csv"%>
-	<%=form.submit "import",class:"btn btn-sm btn-success"%>
-<% end %>
-</div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

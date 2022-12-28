@@ -1,9 +1,9 @@
 <%=search_form_for @q,url: :root do |form|%>
     <div class="input-group">
       <div class="topMargin">
-        <%=form.search_field :first_name_or_last_name_or_email_cont,class:"form-control",placeholder:"Search...." %>
+        <%=form.search_field :first_name_or_last_name_or_email_or_gender_cont,class:"form-control",placeholder:"Search...." %>
       </div> 
-      <i class=""><%=form.submit "Search", class:"btn btn-outline-primary my-1"%></i>
+      <i class=""><%=form.submit "Search", class:"btn btn-outline-primary"%></i>
      
     </div>
       <%end%> 

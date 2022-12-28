@@ -1,6 +1,8 @@
-<% if !current_user.email_verify? %>
+<%=render 'header'%>
+<%#if !current_user.email_verify? %>
 <div class="center rounded border border-success bg-white my-4">
-<div class="container my-5">
+	<h5 class="text-center my-3">Emial Verification</h5>
+<div class="container my-5 ">
 	<div class="colums">
 		<div class="item">
 			<label for="eamil">Emial</label>
@@ -11,19 +13,18 @@
 	<%= form_with model:current_user, url:verified_email_path, method: :get, local: true do |form| %>
 		<div class="item">
 			<label for="eamil">Enter Code</label>
-      		<%=link_to 'Send Code', sent_otp_on_email_path%>
       		<%=form.text_field :verifyCode%>
-      		<%= form.submit "Submit",:class=> "btn btn-primary btn-sm m-1" %>
+      		<%=link_to 'Send Code', sent_otp_on_email_path,class: "btn btn-primary btn-sm m-1"%>
+      		<%= form.submit "Submit",class: "btn btn-primary btn-sm m-1" %>
       		
 		</div>
 		<%end%>
-		
-
 </div>
 </div>
 </div>
-<%else%>
+<%#else%>
 <div class="center rounded border border-success bg-white my-4">
+	<h5 class="text-center my-3">Phone Verification</h5>
 <div class="container my-5">
 	<div class="colums">
 		<div class="item">
@@ -46,4 +47,4 @@
 </div>
 </div>
 </div>
-<%end%>
+<%#end%>

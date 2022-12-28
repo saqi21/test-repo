@@ -1,71 +1,95 @@
-
 <div class="testbox my-4">
-      
-      	 <%= form_with model: user, local: true do |form| %>
-        <div class="banner">
-          <h1>Member Registration</h1>
-        </div>
-        <div class="colums">
-          <div class="item">
-            <label for="fname"> First Name<span>*</span></label>
-            <%= form.text_field :first_name, class:"inputField"%>
-          </div>
-          <div class="item">
-            <label for="lname"> Last Name<span>*</span></label>
-           <%= form.text_field :last_name , class:"inputField"%>
-          </div>
-          <div class="item">
-            <label for="eamil">Emial<span>*</span></label>
-            <%= form.email_field :email , class:"inputField"%>
-          </div>
-           <div class="item">
-            <label for="phone">Phone<span>*</span></label>
-            <%= form.text_field :phone_number , class:"inputField"%>
-          </div>
-          <div class="item">
-            <label for="zip">Cnic<span>*</span></label>
-            <%= form.text_field :cnic , class:"inputField"%>
-          </div>
-           <div class="item">
-            <label for="dob">Date of Birth<span>*</span></label>
-            <%= form.date_field :dob , class:"inputField"%>
-          </div>
-          <div class="item">
-            <label for="address1">Address<span>*</span></label>
-            <%= form.text_field :address , class:"inputField"%>
-          </div>
-          <div class="item">
-            <label for="state">State<span>*</span></label>
-             <%= form.text_field :state , class:"inputField"%>
-          </div>
-          
-          <div class="item">
-            <label for="zip">Zip/Postal Code<span>*</span></label>
-             <%= form.text_field :zipcode , class:"inputField"%>
-          </div>
-          <div class="item">
-            <label for="city">City<span>*</span></label>
-            <%= form.text_field :city , class:"inputField"%>
-          </div>
-          <div class="item">
-            <label for="files">Gender<span>*</span></label><br>
-              <%= form.radio_button :gender, "Male" ,class:"m-1" %>
-              <label>Male</label>
-              <%= form.radio_button :gender, "Female", class:"m-1"%>
-              <label>Female</label>
-          </div>
-          <div class="item">
-            <label for="files">Upload Files<span>*</span></label>
-              <%= form.file_field :files_Upload , class:"inputField"%>
-          </div>
-          
-        </div>
-        </div>
-
-        <div class="btn btn-sm  float-left">
-          <%= form.submit "Submit",:class=> "btn btn-primary m-1" %>
-          <% end %>
-        </div>
-      
-      
+    <div class="formBack">
+    <%= form_with model: user, local: true do |form| %>
+    <div class="banner">
+        <h1>Member Registration</h1>
     </div>
+    <div class="colums">
+        <div class="item">
+        <label for="fname"> First Name<span>*</span></label>
+        <%= form.text_field :first_name , class:"inputField"%>
+        <% @user.errors.full_messages_for(:first_name).each do |message| %>
+        <small class="text-danger"><%= message %></small>
+         <% end %>
+        </div>
+        <div class="item">
+        <label for="lname"> Last Name<span>*</span></label>
+        <%= form.text_field :last_name , class:"inputField"%>
+        <% @user.errors.full_messages_for(:last_name).each do |message| %>
+        <small class="text-danger"><%= message %></small>
+         <% end %>
+        </div>
+        <div class="item">
+        <label for="eamil">Emial<span>*</span></label>
+        <%= form.email_field :email , class:"inputField"%>
+        <% @user.errors.full_messages_for(:email).each do |message| %>
+        <small class="text-danger"><%= message %></small>
+         <% end %>
+        </div>
+        <div class="item">
+        <label for="phone">Phone<span>*</span></label>
+        <%= form.text_field :phone_number , class:"inputField"%>
+        <% @user.errors.full_messages_for(:phone_number).each do |message| %>
+        <small class="text-danger"><%= message %></small>
+         <% end %>
+        </div>
+        <div class="item">
+        <label for="zip">Cnic<span>*</span></label>
+        <%= form.text_field :cnic , class:"inputField"%>
+         <% @user.errors.full_messages_for(:cnic).each do |message| %>
+        <small class="text-danger"><%= message %></small>
+         <% end %>
+        </div>
+        <div class="item">
+        <label for="dob">Date of Birth<span>*</span></label>
+        <%= form.date_field :dob , class:"inputField"%>
+         <% @user.errors.full_messages_for(:dob).each do |message| %>
+        <small class="text-danger"><%= message %></small>
+         <% end %>
+        </div>
+        <div class="item">
+        <label for="address1">Address<span>*</span></label>
+        <%= form.text_field :address , class:"inputField"%>
+         <% @user.errors.full_messages_for(:address).each do |message| %>
+        <small class="text-danger"><%= message %></small>
+         <% end %>
+        </div>
+        <div class="item">
+        <label for="state">State<span>*</span></label>
+            <%= form.text_field :state , class:"inputField"%>
+        <% @user.errors.full_messages_for(:state).each do |message| %>
+        <small class="text-danger"><%= message %></small>
+         <% end %>
+        </div>
+        <div class="item">
+        <label for="zip">Zip/Postal Code<span>*</span></label>
+            <%= form.text_field :zipcode , class:"inputField"%>
+             <% @user.errors.full_messages_for(:zipcode).each do |message| %>
+        <small class="text-danger"><%= message %></small>
+         <% end %>
+        </div>
+        <div class="item">
+        <label for="city">City<span>*</span></label>
+        <%= form.text_field :city , class:"inputField"%>
+         <% @user.errors.full_messages_for(:city).each do |message| %>
+        <small class="text-danger"><%= message %></small>
+         <% end %>
+        </div>
+        <div class="item">
+        <label for="files">Gender<span>*</span></label><br>
+            <%= form.radio_button :gender, "Male" %>
+            <label>Male</label>
+            <%= form.radio_button :gender, "Female"%>
+            <label>Female</label>
+        </div>
+        <div class="item">
+        <label for="files">Upload Files<span>*</span></label>
+            <%= form.file_field :files_Upload , class:"inputField"%>
+        </div>
+    </div>
+        <div class="w-25">
+            <%= form.submit "submit", class:"btn btn-outline-primary "%>
+        </div>
+        <% end %>
+        </div>
+</div>

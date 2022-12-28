@@ -10,22 +10,21 @@ class UsersController < ApplicationController
         @users=User.where(id:current_user.id)
       end
   end
-
   def edit
     @user=User.find(current_user.id)
   end
-
   def show
     @user = User.find(params[:id])
   end
-
   def update
     @user=User.find(current_user.id)
     if @user.update(user_params)
-      render 'verificationModuel'
+      redirect_to verificatoin_module_url
     else
       render 'edit'
     end
+  end
+  def verificationModuel
   end
   def status_approved
     @user = User.find(params[:id])
@@ -37,7 +36,6 @@ class UsersController < ApplicationController
     flash[:alert]="No action perform"
   end
   end
-
   def userReject
     @user = User.find(params[:id])
     if @user.update(status: 2)
@@ -69,13 +67,10 @@ class UsersController < ApplicationController
         current_user.update(email_verify: true)
         flash[:alert]="Email verified successfully"
     else
-        flash[:alert]="Email verificatoin unsuccessfully"
+        flash[:alert]="Wrong OTP! Code Email verificatoin unsuccessfully"
     end
     render 'verificationModuel'
   end
-  def verificationModuel
-  end
-
   def send_phoneCode
       @user=User.find(current_user.id)
       $phone_code=rand.to_s[2..7]
@@ -95,12 +90,10 @@ class UsersController < ApplicationController
       redirect_to root_path
       flash[:alert]="ThankYou Your Appllciation Completed Successfully"
     else
-      flash[:alert]="Phone number verificaion Unsuccessfully"
+      flash[:alert]="Wrong OTP! Phone number verificaion Unsuccessfully"
       return
     end
-
   end
-
   private
   def user_params
     params.require(:user).permit(:first_name,:last_name,:email,

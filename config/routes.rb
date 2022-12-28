@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 end
   resources :users, only: [:edit,:update,:show]
   # put "users/file_upload", to: "users#file_upload"
-  #get 'users/:id/verify_user', to: 'users#verificationModuel'
+  get 'users/:id/verify_user', to: 'users#verificationModuel'     ,as:"verificatoin_module"
   get 'users/:id/sent_email_OTP_Code',to: 'users#send_emailCode'  ,as:"sent_otp_on_email"
   get 'users/:id/email_verified'  ,to: 'users#verify_email_code'   ,as:"verified_email"
   get 'users/:id/sent_Phone_OTP_Code', to: 'users#send_phoneCode' ,as:"sent_otp_on_phone"
